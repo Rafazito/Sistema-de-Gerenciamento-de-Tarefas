@@ -1,5 +1,6 @@
 package com.treina.recife.sgp.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -24,8 +25,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity(name = "Tarefa")
 
-public class Tarefa {
-
+public class Tarefa implements Serializable {
+private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "taskId")
@@ -34,11 +35,11 @@ private long taskId;
 @Column(name = "titulo" , nullable = false)
 private String titulo;
 
-@JsonFormat(pattern = "dd/MM/yyyy")
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 @Column (name = "dataCriacao")
 private LocalDate dataCriacao;
 
-@JsonFormat(pattern = "dd/MM/yyyy")
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 @Column (name = "dataConclusao")
 private LocalDate dataConclusao;
 
